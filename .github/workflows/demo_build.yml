@@ -9,7 +9,7 @@ on:
 jobs:
   commit-demo:
     runs-on: ubuntu-latest
-    environment: protected-branch-bot
+    environment: release
     permissions:
       contents: write
     steps:
