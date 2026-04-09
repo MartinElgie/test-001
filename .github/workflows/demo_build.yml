@@ -10,8 +10,6 @@ jobs:
   commit-demo:
     runs-on: ubuntu-latest
     environment: release
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
 
