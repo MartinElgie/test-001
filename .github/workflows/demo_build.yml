@@ -40,6 +40,8 @@ jobs:
         run: echo "Build run at $(date -u)" >> build-log.txt
 
       - name: Commit and push
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           git add build-log.txt
           git commit -m "demo: append build timestamp [skip ci]"
