@@ -1,0 +1,23 @@
+name: Demo build commit
+
+on:
+  push:
+    branches:
+      - 'release/**'
+
+jobs:
+  commit-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write a line to the file
+        run: echo "Build run at $(date -u)" >> build-log.txt
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add build-log.txt
+          git commit -m "demo: append build timestamp [skip ci]"
+          git push
