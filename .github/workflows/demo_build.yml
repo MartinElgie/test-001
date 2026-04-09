@@ -26,6 +26,8 @@ jobs:
         run: echo "Build run at $(date -u)" >> build-log.txt
 
       - name: Commit and push
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
