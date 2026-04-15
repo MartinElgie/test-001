@@ -9,7 +9,7 @@ on:
 jobs:
   commit-demo:
     runs-on: ubuntu-latest
-    environment: release
+    environment: bot-commits
     steps:
       - name: Generate App token
         id: app-token
