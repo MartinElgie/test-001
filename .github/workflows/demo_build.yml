@@ -52,6 +52,7 @@ jobs:
         #env:
         #  GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          git add build-log.txt
+          cd ..
+          git add .
           git commit -m "demo: append build timestamp [skip ci]"
           git push
