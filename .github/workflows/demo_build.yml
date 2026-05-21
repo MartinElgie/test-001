@@ -10,6 +10,10 @@ on:
       - 'release/**'
       - 'test/**'
 
+defaults:
+  run:
+    working-directory: folder
+
 jobs:
   commit-demo:
     runs-on: ubuntu-latest
@@ -24,11 +28,13 @@ jobs:
 
       - name: Set git user from app
         id: get-user-id
+        working-directory: ${{ github.workspace }}
         run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Set git credentials
+        working-directory: ${{ github.workspace }}
         run: |
           git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
           git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
